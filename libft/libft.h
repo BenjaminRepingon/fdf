@@ -189,7 +189,7 @@ void		add_str(char **res, char *str);
 void		add_int(char **res, int i);
 void		add_pattern(char **res, t_pattern pat);
 
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-  */
 
 typedef struct	s_vector2f
 {

@@ -12,6 +12,12 @@
 
 #include "fdf.h"
 
+void		render(Window *w, double dt)
+{
+	(void)w;
+	(void)dt;
+}
+
 int		main(int argc, char const *argv[])
 {
 	Window		*window;
@@ -19,7 +25,6 @@ int		main(int argc, char const *argv[])
 	(void)argc;
 	(void)argv;
 	window = new_window(850, 550, "Test", 60);
-
-	swap_buffer(window);
+	set_render(window, &render);
 	return (0);
 }

@@ -17,10 +17,11 @@
 # include <libft.h>
 # include "image.h"
 
-# define MICRO		(1000000)
+# define MICRO		(1000000.0)
 # define Window		t_window
 
-typedef struct		s_window
+typedef struct s_window		t_window;
+struct				s_window
 {
 	void			*mlx;
 	void			*win;
@@ -30,10 +31,16 @@ typedef struct		s_window
 	int				fps;
 	Image			*color_buf;
 	Image			*depth_buf;
-}					t_window;
+	double			start_frame;
+	double			end_frame;
+	double			dt;
+	void			(*update)(double dt);
+	void			(*render)(Window *w, double dt);
+};
 
 Window				*new_window(int width, int height, char *title, int fps);
-void				swap_buffer(Window *w);
 int					loop_hook(Window *w);
+void				set_render(Window *w, void (*render)(Window *w, double dt));
+void				set_update(Window *w, void (*update)(double dt));
 
 #endif
