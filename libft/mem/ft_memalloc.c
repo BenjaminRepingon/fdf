@@ -6,7 +6,7 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 11:01:32 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 16:16:59 by rbenjami         ###   ########.fr       */
+/*   Updated: 2014/05/14 17:25:25 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ void	*ft_memalloc(size_t size)
 {
 	void	*mem;
 
-	if ((mem = malloc(size)))
+	mem = malloc(size);
+	if (mem)
+	{
 		ft_bzero(mem, size);
-	return (mem);
+		return (mem);
+	}
+	return (0);
 }

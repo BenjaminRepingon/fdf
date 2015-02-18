@@ -6,13 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 11:56:13 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:33:51 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:38:17 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-Vec2	*rotate2(Vec2 *vec, float angle)
+VEC2	*rotate2(VEC2 *vec, float angle)
 {
 	float		rad;
 	float		c;

@@ -6,19 +6,17 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 13:41:26 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 17:32:37 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 16:55:55 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "window.h"
 
-static double	getTime(void);
-
-Window			*new_window(int width, int height, char *title, int fps)
+WINDOW			*new_window(int width, int height, char *title)
 {
-	Window	*w;
+	WINDOW	*w;
 
-	if ((w = (Window *)ft_memalloc(sizeof(Window))) == NULL)
+	if ((w = (WINDOW *)ft_memalloc(sizeof(WINDOW))) == NULL)
 		return (NULL);
 	if ((w->mlx = mlx_init()) == NULL)
 	{
@@ -35,58 +33,58 @@ Window			*new_window(int width, int height, char *title, int fps)
 		error("bit buffer error: \n");
 		return (NULL);
 	}
+	w->depth_buf = (float *)ft_memalloc(sizeof(float) * width * height);
 	w->width = width;
 	w->height = height;
 	w->title = title;
-	w->fps = fps;
-	w->start_frame = 0;
-	w->dt = 1.0 / w->fps;
-	w->render = NULL;
-	w->update = NULL;
-	mlx_loop_hook(w->mlx, &loop_hook, w);
-	mlx_loop(w->mlx);
 	return (w);
 }
 
-static void		swap_buffer(Window *w)
+void			swap_buffer(WINDOW *w)
 {
-	(void)w;
+
+	// int i = 0;
+	// int j = 0;
+	// while(i < w->height)
+	// {
+	// 	j = 0;
+	// 	while(j < w->width)
+	// 	{
+	// 		ft_putnbr_base(w->color_buf->data[(int)(i * w->color_buf->sizeline + j * (w->color_buf->bpp / 8)) + 2], 10);
+	// 	// ft_putchar('\t');
+	// 		j++;
+	// 	}
+	// 	ft_putchar('\n');
+	// 	i++;
+	// }
+	// ft_putchar('\n');
+	mlx_put_image_to_window(w->mlx, w->win, w->color_buf->img, 0, 0);
 }
 
-void			set_render(Window *w, void (*render)(Window *w, double dt))
+void			clear_window(WINDOW *w)
 {
-	w->render = render;
+	mlx_clear_window(w->mlx, w->win);
 }
 
-void			set_update(Window *w, void (*update)(double dt))
+void			put_vertex(WINDOW *w, VERT *v)
 {
-	w->update = update;
-}
+	int		index;
+	int		x;
+	int		y;
 
-/*TODO: move it in time "object"*/
-static double	getTime(void)
-{
-	struct timeval		tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec + (double)tv.tv_usec / MICRO);
-}
-
-int				loop_hook(Window *w)
-{
-	unsigned int	sleep;
-
-	if (w->update != NULL)
-		w->update( w->dt );
-	if (w->render != NULL)
-		w->render( w, w->dt );
-	swap_buffer(w);
-	w->end_frame = getTime();
-	w->dt = (w->end_frame - w->start_frame);
-	w->start_frame = w->end_frame;
-	sleep = (MICRO / w->fps) - ( 1.0 / w->dt );
-	/*ft_putnbr_base(1.0 / w->dt, DECIMAL);
-	ft_putchar('\n');*/
-	usleep(sleep);
-	return (0);
+	x = v->pos->x;
+	y = w->height - v->pos->y;
+	if (x < 0 || x > w->width)
+		return ;
+	if (y < 0 || y > w->height)
+		return ;
+	if (v->pos->z >= 0)
+	{
+		index = (y * w->color_buf->sizeline + x * (w->color_buf->bpp / 8));
+		w->color_buf->data[index] = (char)v->color->z;
+		w->color_buf->data[index + 1] = (char)v->color->y;
+		w->color_buf->data[index + 2] = (char)v->color->x;
+		ft_putnbr_base((char)v->color->x, 2);
+	}
+	w->depth_buf[y * w->width + x] = v->pos->z;
 }

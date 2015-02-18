@@ -6,15 +6,15 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/23 17:22:59 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:45:23 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:37:53 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static Mat4		init_rotation_x(float x)
+static MAT4		init_rotation_x(float x)
 {
-	Mat4	rx;
+	MAT4	rx;
 
 	rx.m[0][0] = 1;
 	rx.m[0][1] = 0;
@@ -35,9 +35,9 @@ static Mat4		init_rotation_x(float x)
 	return (rx);
 }
 
-static Mat4		init_rotation_y(float y)
+static MAT4		init_rotation_y(float y)
 {
-	Mat4	ry;
+	MAT4	ry;
 
 	ry.m[0][0] = (float)cos(y);
 	ry.m[0][1] = 0;
@@ -58,9 +58,9 @@ static Mat4		init_rotation_y(float y)
 	return (ry);
 }
 
-static Mat4		init_rotation_z(float z)
+static MAT4		init_rotation_z(float z)
 {
-	Mat4	rz;
+	MAT4	rz;
 
 	rz.m[0][0] = (float)cos(z);
 	rz.m[0][1] = -(float)sin(z);
@@ -81,14 +81,14 @@ static Mat4		init_rotation_z(float z)
 	return (rz);
 }
 
-Mat4			*init_rotation3f(float x, float y, float z)
+MAT4			*init_rotation3f(float x, float y, float z)
 {
-	Mat4	rx;
-	Mat4	ry;
-	Mat4	rz;
-	Mat4	*res;
+	MAT4	rx;
+	MAT4	ry;
+	MAT4	rz;
+	MAT4	*res;
 
-	if ((res = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((res = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	x = to_radians(x);
 	y = to_radians(y);
@@ -100,11 +100,11 @@ Mat4			*init_rotation3f(float x, float y, float z)
 	return (res);
 }
 
-Mat4			*init_rotation3v(Vec3 *f, Vec3 *u, Vec3 *r)
+MAT4			*init_rotation3v(VEC3 *f, VEC3 *u, VEC3 *r)
 {
-	Mat4	*m;
+	MAT4	*m;
 
-	if ((m = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((m = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	m->m[0][0] = r->x;
 	m->m[0][1] = r->y;

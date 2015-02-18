@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2f_div.c                                     :+:      :+:    :+:   */
+/*   mesh.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/25 11:55:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/18 10:38:11 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/02/18 10:48:08 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/02/18 11:49:57 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef MESH_H
+# define MESH_H
+# include <libft.h>
 
-VEC2	*div2f(VEC2 *vec1, float value)
-{
-	vec1->x /= value;
-	vec1->y /= value;
-	return (vec1);
-}
+# define MESH		t_mesh
 
-VEC2	*div2v(VEC2 *vec1, VEC2 *vec2)
+typedef struct		s_mesh
 {
-	vec1->x /= vec2->x;
-	vec1->y /= vec2->y;
-	return (vec1);
-}
+	t_list			*points;
+}					t_mesh;
+
+MESH				*new_mesh(void);
+int					load_file_fdf(MESH *m, char const *file_name);
+
+#endif

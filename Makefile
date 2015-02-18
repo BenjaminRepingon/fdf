@@ -26,9 +26,12 @@ HEAD			=	includes/$(NAME).h
 
 SRC_DIR			=	srcs/
 
-FILES			=	$(NAME).c	\
-					window.c	\
-					image.c		\
+FILES			=	$(NAME).c		\
+					window.c		\
+					image.c			\
+					mesh.c			\
+					object.c		\
+					core_engine.c	\
 
 SRC				=	$(addprefix $(SRC_DIR)/, $(FILES))
 

@@ -6,25 +6,31 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/17 11:55:33 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 17:17:59 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 16:46:31 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "mesh.h"
+#include "core_engine.h"
 
-void		render(Window *w, double dt)
+#include <stdio.h>
+
+int			main(int argc, char const *argv[])
 {
-	(void)w;
-	(void)dt;
-}
+	CORE_ENGINE		*core;
+	MESH			*mesh;
 
-int		main(int argc, char const *argv[])
-{
-	Window		*window;
+	if (argc != 2)
+		return (error("usage: ./fdf <map>"));
+	mesh = new_mesh();
 
-	(void)argc;
-	(void)argv;
-	window = new_window(850, 550, "Test", 60);
-	set_render(window, &render);
+	if (load_file_fdf(mesh, argv[1]) == FALSE)
+		return (-1);
+
+	core = new_core_engine(60);
+
+	create_window(core, 65, 65, "Test");
+
 	return (0);
 }

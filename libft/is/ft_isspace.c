@@ -6,13 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 12:32:07 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:44:33 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:39:15 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isspace(char c)
+BOOL	ft_isspace(char c)
 {
 	if (c == ' ' || c == '\n' || c == '\t')
 		return (1);

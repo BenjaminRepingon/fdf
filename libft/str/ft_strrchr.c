@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2f_div.c                                     :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/25 11:55:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/18 10:38:11 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/02/18 11:20:39 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/02/18 11:55:12 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-VEC2	*div2f(VEC2 *vec1, float value)
+char	*ft_strrchr(const char *s, int c)
 {
-	vec1->x /= value;
-	vec1->y /= value;
-	return (vec1);
-}
+	int		i;
 
-VEC2	*div2v(VEC2 *vec1, VEC2 *vec2)
-{
-	vec1->x /= vec2->x;
-	vec1->y /= vec2->y;
-	return (vec1);
+	i = ft_strlen(s) + 1;
+	while(i + 1)
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+		i--;
+	}
+	return (0);
 }

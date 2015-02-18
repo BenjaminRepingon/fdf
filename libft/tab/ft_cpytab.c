@@ -34,8 +34,10 @@ int		**ft_cpytab_int(int **tab, int x, int y)
 	int		**new_tab;
 	int		i;
 	int		j;
+	int		tablen;
 
 	i = 0;
+	tablen = ft_tabsize((void **)tab);
 	new_tab = (int **)ft_memalloc(sizeof(int *) * x);
 	while (i < x)
 	{

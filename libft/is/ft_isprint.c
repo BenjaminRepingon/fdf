@@ -6,13 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:21:39 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:44:28 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:39:14 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-bool	ft_isprint(int c)
+BOOL	ft_isprint(int c)
 {
 	return (c >= ' ' && c <= '~');
 }

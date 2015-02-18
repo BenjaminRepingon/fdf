@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2f_div.c                                     :+:      :+:    :+:   */
+/*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/25 11:55:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/18 10:38:11 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/02/18 13:11:02 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/02/18 13:37:17 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef OBJECT_H
+# define OBJECT_H
+# include "core_engine.h"
 
-VEC2	*div2f(VEC2 *vec1, float value)
-{
-	vec1->x /= value;
-	vec1->y /= value;
-	return (vec1);
-}
+# define OBJECT		t_object
 
-VEC2	*div2v(VEC2 *vec1, VEC2 *vec2)
+typedef struct		s_object
 {
-	vec1->x /= vec2->x;
-	vec1->y /= vec2->y;
-	return (vec1);
-}
+	int				(*update)(CORE_ENGINE *c, double dt);
+	int				(*render)(CORE_ENGINE *c, double dt);
+}					t_object;
+
+OBJECT				*new_object(void);
+
+#endif

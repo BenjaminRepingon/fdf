@@ -6,17 +6,17 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/24 15:19:24 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:35:08 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:37:51 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-Mat4		*new_matrix4(void)
+MAT4		*new_matrix4(void)
 {
-	Mat4	*res;
+	MAT4	*res;
 
-	if ((res = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((res = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	res->m[0][0] = 1;
 	res->m[0][1] = 0;
@@ -37,13 +37,13 @@ Mat4		*new_matrix4(void)
 	return (res);
 }
 
-Mat4		*mul4m(Mat4 *m, Mat4 *r)
+MAT4		*mul4m(MAT4 *m, MAT4 *r)
 {
-	Mat4		*res;
+	MAT4		*res;
 	int			i;
 	int			j;
 
-	if ((res = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((res = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	i = 0;
 	while (i < 4)
@@ -62,11 +62,11 @@ Mat4		*mul4m(Mat4 *m, Mat4 *r)
 	return (res);
 }
 
-Mat4		*init_translation(Vec3 *vec)
+MAT4		*init_translation(VEC3 *vec)
 {
-	Mat4	*m;
+	MAT4	*m;
 
-	if ((m = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((m = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	m->m[0][0] = 1;
 	m->m[0][1] = 0;
@@ -87,11 +87,11 @@ Mat4		*init_translation(Vec3 *vec)
 	return (m);
 }
 
-Mat4		*init_scale(float x, float y, float z)
+MAT4		*init_scale(float x, float y, float z)
 {
-	Mat4	*m;
+	MAT4	*m;
 
-	if ((m = (Mat4 *)ft_memalloc(sizeof(Mat4))) == NULL)
+	if ((m = (MAT4 *)ft_memalloc(sizeof(MAT4))) == NULL)
 		return (NULL);
 	m->m[0][0] = x;
 	m->m[0][1] = 0;

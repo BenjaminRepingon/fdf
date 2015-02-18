@@ -6,13 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 15:19:06 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:33:59 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:38:03 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-float		get_value3(Vec3 *vec)
+float		get_value3(VEC3 *vec)
 {
 	return (vec->x + vec->y + vec->z);
 }

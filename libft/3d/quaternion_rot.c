@@ -6,18 +6,18 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/23 17:20:02 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/17 11:35:36 by rbenjami         ###   ########.fr       */
+/*   Updated: 2015/02/18 10:37:57 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-Mat4		*to_rotation_matrix(Quat *q)
+MAT4		*to_rotation_matrix(QUAT *q)
 {
-	Mat4	*mat;
-	Vec3	*forward;
-	Vec3	*up;
-	Vec3	*right;
+	MAT4	*mat;
+	VEC3	*forward;
+	VEC3	*up;
+	VEC3	*right;
 	float	xyz[3];
 
 	xyz[0] = 2.0f * (q->x * q->z - q->w * q->y);

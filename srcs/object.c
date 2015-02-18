@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2f_div.c                                     :+:      :+:    :+:   */
+/*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/25 11:55:04 by rbenjami          #+#    #+#             */
-/*   Updated: 2015/02/18 10:38:11 by rbenjami         ###   ########.fr       */
+/*   Created: 2015/02/18 13:10:54 by rbenjami          #+#    #+#             */
+/*   Updated: 2015/02/18 13:16:14 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "object.h"
 
-VEC2	*div2f(VEC2 *vec1, float value)
+OBJECT				*new_object(void)
 {
-	vec1->x /= value;
-	vec1->y /= value;
-	return (vec1);
-}
+	OBJECT	*o;
 
-VEC2	*div2v(VEC2 *vec1, VEC2 *vec2)
-{
-	vec1->x /= vec2->x;
-	vec1->y /= vec2->y;
-	return (vec1);
+	if ((o = (OBJECT *)ft_memalloc(sizeof(OBJECT))) == NULL)
+		return (NULL);
+	o->update = NULL;
+	o->render = NULL;
+	return (o);
 }

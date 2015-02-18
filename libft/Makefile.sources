@@ -18,6 +18,7 @@ SRC_LIB		=	put/ft_putstr.c			\
 				\
 				str/ft_strlen.c			\
 				str/ft_strchr.c			\
+				str/ft_strrchr.c		\
 				str/ft_strstr.c			\
 				str/ft_strncpy.c		\
 				str/ft_strcmp.c			\
@@ -79,4 +80,5 @@ SRC_LIB		=	put/ft_putstr.c			\
 				3d/quaternion_rot.c		\
 				3d/matrix4f.c			\
 				3d/matrix4f_rot.c		\
+				3d/vertex.c				\
 				3d/transforms.c
